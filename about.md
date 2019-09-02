@@ -3,13 +3,17 @@ layout: page
 title: About
 permalink: /about/
 ---
-
-Some information about you!
+Пастушков Илья Сергеевич
+Квалификация: *Преподаватель-исследователь* 
+Преподаватель ООП групп 18210, 18211 ФИТ НГУ, чему несказанно рад!
+Пишу статьи, ~~посты и тексты~~ в ИВТ СО РАН, лаборатории информационных ресурсов.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Научные интересы: Разработка систем анализа текстов, Natural Language Processing, Data Science, Machine Learning и прочие модные словосочетания о которых все говорят но никто ничего не может сказать внятно. Бронзовая медаль на kaggle. 
+Интересы: DIY, фэнтези, русская поэзия, еее рок. 
+Ранее преподаваемые курсы: *Базы данных* в ВКИ НГУ
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[pas2shkov.ilya@gmail.com](mailto:pas2shkov.ilya@gmail.com)
