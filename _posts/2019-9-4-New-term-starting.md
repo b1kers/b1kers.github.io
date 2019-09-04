@@ -29,7 +29,7 @@ namespace Module1
 ```
 
 Файл _module1.cpp_:
-```сpp
+```cpp
 #include "module1.h"
 
 namespace Module1
@@ -43,7 +43,7 @@ namespace Module1
 ```
 
 Файл _module2.h_:
-```сpp
+```cpp
 #include <string>
 
 namespace Module2
@@ -52,7 +52,7 @@ namespace Module2
 }
 ```
 Файл _module2.cpp_:
-```сpp
+```cpp
 #include "module2.h"
 
 namespace Module2
@@ -65,7 +65,7 @@ namespace Module2
 }
 ```
 Файл _main.cpp_:
-```сpp
+```cpp
 #include "module1.h"
 #include "module2.h"
 #include <iostream>
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 }
 ```
 С тестовой программой нужно выполнить следующие действия:
-1. Собрать программу и убедиться, что на каждый *.cpp файл создается отдельный объектный файл с тем же именем (для Visual Studio, например, в папке Debug будут создаваться файлы с расширением *.obj). 
+1. Собрать программу и убедиться, что на каждый *.cpp файл создается отдельный объектный файл с тем же именем (для Visual Studio, например, в папке Debug будут создаваться файлы с расширением *.obj, AFAIK в CLion аналогично). 
 
 2. Убедиться, что при изменении одного *.cpp файла и пересборке проекта обновляется только соответствующий ему объектный файл (дата изменения других объектных файлов останется прежней)
 
