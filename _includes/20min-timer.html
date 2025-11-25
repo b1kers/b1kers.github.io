@@ -1,0 +1,70 @@
+<div style="text-align: center; margin: 2rem;">
+  <h3>20-Minute Timer</h3>
+  <div id="timer-display" style="font-size: 2rem; margin: 1rem; font-family: monospace;">20:00</div>
+  <button id="start-btn" style="padding: 0.5rem 1rem; font-size: 1rem;">Start 20-Minute Timer</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const display = document.getElementById('timer-display');
+    const button = document.getElementById('start-btn');
+    let countdownInterval = null;
+    const totalSeconds = 20 * 60; // 20 minutes in seconds
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function playAlarm() {
+      // Use Web Audio API to generate a short beep (no external file needed)
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, audioContext.currentTime); // 800 Hz tone
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.start();
+        setTimeout(() => {
+          oscillator.stop();
+        }, 1000); // beep for 1 second
+      } catch (e) {
+        console.warn('Audio not supported or blocked:', e);
+        // Fallback: alert or visual cue
+        display.style.color = 'red';
+        display.textContent = '⏰ Time is up!';
+      }
+    }
+
+    button.addEventListener('click', () => {
+      // Clear any existing timer
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      let timeLeft = totalSeconds;
+      display.textContent = formatTime(timeLeft);
+      display.style.color = '#000';
+      button.disabled = true;
+      button.textContent = 'Running...';
+
+      countdownInterval = setInterval(() => {
+        timeLeft--;
+        display.textContent = formatTime(timeLeft);
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          playAlarm();
+          display.textContent = '⏰ Time is up!';
+          button.disabled = false;
+          button.textContent = 'Start Again';
+        }
+      }, 1000);
+    });
+  });
+</script>
